@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html>
-
+<?php 
+      $leftMenu = [ 
+      ['link'=>'Домой', 'href'=>'index.php'], 
+      ['link'=>'О нас', 'href'=>'about.php'], 
+      ['link'=>'Контакты', 'href'=>'contact.php'],
+      ['link'=>'Таблица умножения', 'href'=>'table.php'], 
+      ['link'=>'Калькулятор', 'href'=>'calc.php'] 
+    ]; 
+    ?> 
 <head>
   <title>Сайт нашей школы</title>
   <meta charset="utf-8" />
@@ -39,25 +47,18 @@
     <h2>Навигация по сайту</h2>
     <!-- Меню -->
     <ul>
-      <li><a href='index.php'>Домой</a>
-      </li>
-      <li><a href='about.php'>О нас</a>
-      </li>
-      <li><a href='contact.php'>Контакты</a>
-      </li>
-      <li><a href='table.php'>Таблица умножения</a>
-      </li>
-      <li><a href='calc.php'>Калькулятор</a>
-      </li>
+        <?php foreach ($leftMenu as $menuItem) { ?>
+        <li><a href='<?= $menuItem['href']?>'><?= $menuItem['link']?></a></li>
+        <?php } ?>
     </ul>
     <!-- Меню -->
     <!-- Навигация -->
-  </div>
-  <div id="footer">
-    <!-- Нижняя часть страницы -->
-    &copy; Супер Мега Веб-мастер, 2000 &ndash; 2021
-    <!-- Нижняя часть страницы -->
-  </div>
-</body>
-
-</html>
+</div>
+    <div id="footer">
+      <!-- Нижняя часть страницы -->
+      &copy; Супер Мега Веб-мастер, 2000 &ndash; 2021
+      <!-- Нижняя часть страницы -->
+    </div>
+  </body>
+  
+  </html>
