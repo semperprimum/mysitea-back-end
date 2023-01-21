@@ -1,7 +1,30 @@
 <!DOCTYPE html>
 <?php
-    $cols = rand(1,10);
-    $rows = rand(1,10);
+    // $cols = rand(1,10);
+    // $rows = rand(1,10);
+
+    function drawTable($rows, $cols, $color) {
+      $firstR = true;
+      $firstC = true;
+    for ($r = 1; $r <= $rows; $r++) {
+      if ($firstR) {
+        echo "<tr class='first', style='background-color: $color;'>";
+        $firstR = false;
+      } else {
+        echo "<tr>";
+        $firstC = true;
+      }
+      for ($c = 1; $c <= $cols; $c++) {
+        $cellValue = $c * $r;
+        if ($firstC) {
+          echo "<td class='first', style='background-color: $color;'>$cellValue</td>";
+          $firstC = false;
+        } else {
+          echo "<td>$cellValue</td>";
+        }
+      }
+    }
+  }
 ?>
 <html>
 
@@ -44,29 +67,7 @@
     <!-- Таблица -->
     <table border='1', width='200'>
     
-    <?php 
-      $firstR = true;
-      $firstC = true;
-
-      for ($r = 1; $r <= $rows; $r++) {
-        if ($firstR) {
-          echo "<tr class='first'>";
-          $firstR = false;
-        } else {
-          echo "<tr>";
-          $firstC = true;
-        }
-        for ($c = 1; $c <= $cols; $c++) {
-          $cellValue = $c * $r;
-          if ($firstC) {
-            echo "<td class='first'>$cellValue</td>";
-            $firstC = false;
-          } else {
-            echo "<td>$cellValue</td>";
-          }
-        }
-      }
-    ?>
+    <?php drawTable(5, 5, 'blue') ?>
 
     </table>
     <!-- Таблица -->

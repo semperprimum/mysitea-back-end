@@ -29,6 +29,18 @@
       } else {
         $welcome = 'Доброй ночи';
       }
+
+      function drawMenu($menu, $vertical=true) {
+        if ($vertical) {
+        foreach ($menu as $menuItem)  { 
+          echo "<li><a href=".$menuItem['href'].">".$menuItem['link']."</a></li>";
+          } 
+        } else {
+          foreach ($menu as $menuItem) {
+            echo "<a href=".$menuItem['href'].">".$menuItem['link']." </a>";
+          }
+        }  
+      }
       ?> 
 <head>
   <title>Сайт нашей школы</title>
@@ -74,9 +86,7 @@
     <h2>Навигация по сайту</h2>
     <!-- Меню -->
     <ul>
-        <?php foreach ($leftMenu as $menuItem) { ?>
-        <li><a href='<?= $menuItem['href']?>'><?= $menuItem['link']?></a></li>
-        <?php } ?>
+        <?php drawMenu($leftMenu) ?>
     </ul>
     <!-- Меню -->
     <!-- Навигация -->
