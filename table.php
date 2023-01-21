@@ -1,8 +1,27 @@
 <!DOCTYPE html>
 <?php
+    $cols=10;
+    $rows=10;
+    $color="yellow";
     // $cols = rand(1,10);
     // $rows = rand(1,10);
-    include "inc/lib.inc.php"
+    include "inc/table.inc.php";
+
+    setcookie('cols', $cols, time()+86400);
+    setcookie('rows', $rows, time()+86400);
+    setcookie('color', $color, time()+86400);
+
+    if($_SERVER['REQUEST_METHOD'] == 'POST'){
+      $cols = abs((int) $_POST['cols']); 
+      $rows = abs((int) $_POST['rows']); 
+      $color = trim(strip_tags($_POST['color']));
+      setcookie('cols', $cols, time()+86400);
+      setcookie('rows', $rows, time()+86400);
+      setcookie('color', $color, time()+86400);
+      } 
+      $cols = ($cols) ? $cols : 10; 
+      $rows = ($rows) ? $rows : 10; 
+      $color = ($color) ? $color : 'yellow'; 
 ?>
 <html>
 
@@ -14,30 +33,19 @@
 
 <body>
 
-  <div id="header">
-    <!-- Верхняя часть страницы -->
-    <img src="logo.gif" width="187" height="29" alt="Наш логотип" class="logo" />
-    <span class="slogan">приходите к нам учиться</span>
-    <!-- Верхняя часть страницы -->
-  </div>
-
-  <div id="content">
-    <!-- Заголовок -->
-    <h1>Таблица умножения</h1>
-    <!-- Заголовок -->
     <!-- Область основного контента -->
-    <form action=''>
+    <form action='' method="post">
       <label>Количество колонок: </label>
       <br />
-      <input name='cols' type='text' value="" />
+      <input name='cols' type='text' value="<?= $cols ?>" />
       <br />
       <label>Количество строк: </label>
       <br />
-      <input name='rows' type='text' value="" />
+      <input name='rows' type='text' value="<?= $rows ?>" />
       <br />
       <label>Цвет: </label>
       <br />
-      <input name='color' type='text' value="" />
+      <input name='color' type='text' value="<?= $color ?>" />
       <br />
       <br />
       <input type='submit' value='Создать' />
@@ -45,34 +53,11 @@
     <!-- Таблица -->
     <table border='1', width='200'>
     
-    <?php drawTable(5, 5, 'blue') ?>
+    <?php drawTable($cols, $rows, $color) ?>
 
     </table>
     <!-- Таблица -->
     <!-- Область основного контента -->
-  </div>
-  <div id="nav">
-    <h2>Навигация по сайту</h2>
-    <!-- Меню -->
-    <ul>
-      <li><a href='index.php'>Домой</a>
-      </li>
-      <li><a href='about.php'>О нас</a>
-      </li>
-      <li><a href='contact.php'>Контакты</a>
-      </li>
-      <li><a href='table.php'>Таблица умножения</a>
-      </li>
-      <li><a href='calc.php'>Калькулятор</a>
-      </li>
-    </ul>
-    <!-- Меню -->
-  </div>
-  <div id="footer">
-    <!-- Нижняя часть страницы -->
-    &copy; Супер Мега Веб-мастер, 2000 &ndash; 2021
-    <!-- Нижняя часть страницы -->
-  </div>
 </body>
 
 </html>

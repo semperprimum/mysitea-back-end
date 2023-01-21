@@ -1,10 +1,10 @@
 <?php 
       $leftMenu = [ 
         ['link'=>'Домой', 'href'=>'index.php'], 
-        ['link'=>'О нас', 'href'=>'about.php'], 
-        ['link'=>'Контакты', 'href'=>'contact.php'],
-        ['link'=>'Таблица умножения', 'href'=>'table.php'], 
-        ['link'=>'Калькулятор', 'href'=>'calc.php'] 
+        ['link'=>'О нас', 'href'=>'index.php?id=about.php'], 
+        ['link'=>'Контакты', 'href'=>'index.php?id=contact.php'],
+        ['link'=>'Таблица умножения', 'href'=>'index.php?id=table.php'], 
+        ['link'=>'Калькулятор', 'href'=>'index.php?id=calc.php'] 
         ];
   
         date_default_timezone_set('Asia/Almaty');
@@ -25,7 +25,5 @@
           $welcome = 'Добрый вечер';
         } else {
           $welcome = 'Доброй ночи';
-        }
-  
-        
+        }  
 ?>
